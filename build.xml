@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="patterntest" default="all" basedir=".">
+<project name="unittesttest" default="all" basedir=".">
   
 	<property name="src.main" value="src/main/java" />
 	<property name="src.test" value="src/test/java" />
 	<property name="resources.main" value="src/main/resources" />
 	<property name="resources.test" value="src/test/resources" />
 	<property name="builddir" value="build" />
-	<property name="reportdir" value="report" />
+	<property name="reportdir" value="${builddir}/reports" />
 	
   <path id="classpath.compile">
     <fileset dir="lib/main" />
@@ -27,12 +27,12 @@
 	
 	<target name="compile">
 		<mkdir dir="${builddir}"/>
-		<javac srcdir="${src.main}" classpathref="classpath.compile" destdir="${builddir}" />
+		<javac srcdir="${src.main}" classpathref="classpath.compile" destdir="${builddir}" includeantruntime="no" />
 	</target>
 	
 	<target name="test" depends="compile">
 		<mkdir dir="${reportdir}"/>
-		<javac srcdir="${src.test}" classpathref="classpath.test" destdir="${builddir}" />
+		<javac srcdir="${src.test}" classpathref="classpath.test" destdir="${builddir}" includeantruntime="no" />
 		<copy todir="${builddir}">
 			<fileset dir="${resources.main}" />
 			<fileset dir="${resources.test}" />
